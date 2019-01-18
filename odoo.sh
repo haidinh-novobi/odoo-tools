@@ -19,7 +19,7 @@ elif [ $1 = "--help" ]; then
     echo "      - Ex: sh odoo.sh start"
     echo "      [upgrade MODULE_NAME DB_NAME]                 Upgrade Odoo with module and database."
     echo "      - Ex: sh odoo.sh upgrade base db_demo"
-    echo "      [upgrade-sa MODULE_NAME DB_NAME]                 Upgrade Odoo with module and database with option --stop-after-init"
+    echo "      [upgrade-sa MODULE_NAME DB_NAME]                 Upgrade Odoo with module, database and option --stop-after-init"
     echo "      - Ex: sh odoo.sh upgrade-sa base db_demo"
     echo "      [startwithport PORT]                          Start Odoo with port define."
     echo "      - Ex: sh odoo.sh startwithport 8069"
