@@ -7,7 +7,7 @@ elif [ $1 = "startwithport" ]; then
     ./odoo/odoo-bin -c odoo.conf --xmlrpc-port=$2
 
 elif [ $1 = "upgradewithport" ]; then
-    ./odoo/odoo-bin -c odoo.conf --xmlrpc-port=$2  -u $3 -d $4
+    ./odoo/odoo-bin -c odoo.conf --xmlrpc-port=$2  -u $3 -d $4 --longpolling-port=$5
 
 elif [ $1 = "serverstart" ]; then
     ./odoo/odoo-bin -c server.conf
@@ -19,6 +19,8 @@ elif [ $1 = "--help" ]; then
     echo "      - Ex: sh odoo.sh start"
     echo "      [upgrade MODULE_NAME DB_NAME]                 Upgrade Odoo with module and database."
     echo "      - Ex: sh odoo.sh upgrade base db_demo"
+    echo "      [upgrade-sa MODULE_NAME DB_NAME]                 Upgrade Odoo with module, database and option --stop-after-init"
+    echo "      - Ex: sh odoo.sh upgrade-sa base db_demo"
     echo "      [startwithport PORT]                          Start Odoo with port define."
     echo "      - Ex: sh odoo.sh startwithport 8069"
     echo "      [upgradewithport PORT MODULE_NAME DB_NAME]    upgrade Odoo with port define."
@@ -28,6 +30,9 @@ elif [ $1 = "--help" ]; then
     echo "      [--help]                                      Show more options."
     echo "================================ END ================================"
 
-else [ $1 = "upgrade" ]
+elif [ $1 = "upgrade" ]; then
     ./odoo/odoo-bin -c odoo.conf -u $2 -d $3
+
+else [ $1 = "upgrade-sa" ]
+    ./odoo/odoo-bin -c odoo.conf -u $2 -d $3 --stop-after-init
 fi
